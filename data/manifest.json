@@ -1,0 +1,534 @@
+{
+  "source_url": "https://www.business.qld.gov.au/industries/mining-energy-water/resources/safety-health/mining/legislation-standards/recognised-standards",
+  "checked_at": "2025-09-14 03:05:41",
+  "items": {
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0019/240382/recognised-standard-01.pdf": {
+      "filename": "RS1_recognised-standard-01.pdf",
+      "etag": "W/\"6699f0b5-5bf70",
+      "last_modified": "Fri, 19 Jul 2024 04:51:01 GMT",
+      "content_length": 0,
+      "sha256": "5538d8d3e1539d7aa9f4ec14d0e793f42e91ad90ba182bd63868f01e235cd4f6",
+      "updated_at": "2025-09-14 03:03:11"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0018/240381/recognised-standard-02.pdf": {
+      "filename": "RS2_recognised-standard-02.pdf",
+      "etag": "W/\"5b986b34-7d1ae",
+      "last_modified": "Wed, 12 Sep 2018 01:26:12 GMT",
+      "content_length": 0,
+      "sha256": "b28ef390d165330cf7360f800356e4b3cf6dd47839861fbe77343eba1a14494b",
+      "updated_at": "2025-09-14 03:03:12"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0017/240380/recognised-standard-03.pdf": {
+      "filename": "RS3_recognised-standard-03.pdf",
+      "etag": "W/\"6487d9fa-62894",
+      "last_modified": "Tue, 13 Jun 2023 02:52:42 GMT",
+      "content_length": 0,
+      "sha256": "25c24ebcbbbe9737e580f47a6186844e32c5d7d9a957c3b384866db2fa2a51c2",
+      "updated_at": "2025-09-14 03:03:12"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0007/240379/recognised-standard-04.pdf": {
+      "filename": "RS4_recognised-standard-04.pdf",
+      "etag": "W/\"62ec622c-51e22",
+      "last_modified": "Fri, 05 Aug 2022 00:19:56 GMT",
+      "content_length": 0,
+      "sha256": "3974cc97d4156ec9ee91c3aab794bca3a3eaa84914365a15005fa87de3d39d0f",
+      "updated_at": "2025-09-14 03:03:13"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0006/240378/recognised-standard-05.pdf": {
+      "filename": "RS5_recognised-standard-05.pdf",
+      "etag": "W/\"6487da29-66509",
+      "last_modified": "Tue, 13 Jun 2023 02:53:29 GMT",
+      "content_length": 0,
+      "sha256": "4fdf8512208a199760cbc02aefce557560ce6fda41ed1b9e32b9703c4f5a6d56",
+      "updated_at": "2025-09-14 03:03:14"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0005/240377/recognised-standard-06.pdf": {
+      "filename": "RS6_recognised-standard-06.pdf",
+      "etag": "W/\"6487da9e-5c8d9",
+      "last_modified": "Tue, 13 Jun 2023 02:55:26 GMT",
+      "content_length": 0,
+      "sha256": "4c658f2aeb51618a8fcc3bbb0167877a4559517c2122906e22d12ee9e3603578",
+      "updated_at": "2025-09-14 03:03:15"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0004/240376/recognised-standard-07.pdf": {
+      "filename": "RS7_recognised-standard-07.pdf",
+      "etag": "W/\"6487da6c-6d4b1",
+      "last_modified": "Tue, 13 Jun 2023 02:54:36 GMT",
+      "content_length": 0,
+      "sha256": "6ad077484f02713bc688760607be4ff25100e10e1f194df56084e2fec45dacd2",
+      "updated_at": "2025-09-14 03:03:15"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0020/240374/recognised-standard-08.pdf": {
+      "filename": "RS8_recognised-standard-08.pdf",
+      "etag": "W/\"6487d9d0-7e158",
+      "last_modified": "Tue, 13 Jun 2023 02:52:00 GMT",
+      "content_length": 0,
+      "sha256": "3e60844e987040fd0aeeaba5644eb34e6dc437c7b192e90d6a177f9a53c4304f",
+      "updated_at": "2025-09-14 03:03:17"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0018/240372/recognised-standard-09.pdf": {
+      "filename": "RS9_recognised-standard-09.pdf",
+      "etag": "W/\"5b986c06-7db60",
+      "last_modified": "Wed, 12 Sep 2018 01:29:42 GMT",
+      "content_length": 0,
+      "sha256": "e7e2ba4ba1babb63672bb1e213c80855aa2bb5ff9ee066b2cd98a03586e1a51a",
+      "updated_at": "2025-09-14 03:03:18"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0017/240371/recognised-standard-10.pdf": {
+      "filename": "RS10_recognised-standard-10.pdf",
+      "etag": "W/\"5b986c2d-94f14",
+      "last_modified": "Wed, 12 Sep 2018 01:30:21 GMT",
+      "content_length": 0,
+      "sha256": "aa298f513d8a34b6d5010ed76afe18f93cee27e85a4946ff7fd9b7aa4c2b4232",
+      "updated_at": "2025-09-14 03:03:20"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0016/240370/recognised-standard-11.pdf": {
+      "filename": "RS11_recognised-standard-11.pdf",
+      "etag": "W/\"64bdfac6-a703e",
+      "last_modified": "Mon, 24 Jul 2023 04:15:02 GMT",
+      "content_length": 0,
+      "sha256": "e636d1638cd891c0dbf43977de3d8be7ae495cbb1b1fffbc7e8de5aa866da62f",
+      "updated_at": "2025-09-14 03:03:22"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0007/986065/recognised-standard-12.pdf": {
+      "filename": "RS12_recognised-standard-12.pdf",
+      "etag": "W/\"5b986c6d-bb067",
+      "last_modified": "Wed, 12 Sep 2018 01:31:25 GMT",
+      "content_length": 0,
+      "sha256": "7732fabc43f4ec4ada18cfda867cb5c3bd988402981e3f184a36ec9580484001",
+      "updated_at": "2025-09-14 03:03:23"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0004/986071/recognised-standard-13.pdf": {
+      "filename": "RS13_recognised-standard-13.pdf",
+      "etag": "W/\"6716e01d-1d61b3",
+      "last_modified": "Mon, 21 Oct 2024 23:13:33 GMT",
+      "content_length": 0,
+      "sha256": "1d05d61b98a75e710d775c350e88879e76d39f7942ea65c62cca21d9cc3d7902",
+      "updated_at": "2025-09-14 03:03:27"
+    },
+    "https://www.rshq.qld.gov.au/resources/documents/mines-resources/safety-and-health/legislation,-standards-and-guidelines/recognised-standards-coal-mines/recognised-standard-14.pdf": {
+      "filename": "RS14_recognised-standard-14.pdf",
+      "etag": "",
+      "last_modified": "Thu, 30 Sep 2021 23:17:04 GMT",
+      "content_length": 0,
+      "sha256": "93ce6df21d37ec0c38d2f7904abf5b6255bee29294963058e99a0967af35c485",
+      "updated_at": "2025-09-14 03:03:30"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0018/1242225/recognised-standard-15.pdf": {
+      "filename": "RS15_recognised-standard-15.pdf",
+      "etag": "W/\"5b986e37-24c63d",
+      "last_modified": "Wed, 12 Sep 2018 01:39:03 GMT",
+      "content_length": 0,
+      "sha256": "7d6b0bc3453b8fcbf37597980ee657b88a6b3ffbe4e04638a95e9df607a65264",
+      "updated_at": "2025-09-14 03:03:33"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0005/1445972/recognised-standard-16.pdf": {
+      "filename": "RS16_recognised-standard-16.pdf",
+      "etag": "W/\"5ee2adc7-125bce",
+      "last_modified": "Thu, 11 Jun 2020 22:18:47 GMT",
+      "content_length": 0,
+      "sha256": "71e303c15372686a18995cfd60ea8ccf80f9caa01d31eb96ad06555ced06dc40",
+      "updated_at": "2025-09-14 03:03:35"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0008/1450295/recognised-standard-17.pdf": {
+      "filename": "RS17_recognised-standard-17.pdf",
+      "etag": "W/\"5d3113c6-2b002a",
+      "last_modified": "Fri, 19 Jul 2019 00:50:14 GMT",
+      "content_length": 0,
+      "sha256": "b769a6ed50686efb3e85e2034194637941b8f34b5e1c5fd8200755a872d7bb74",
+      "updated_at": "2025-09-14 03:03:48"
+    },
+    "https://www.rshq.qld.gov.au/resources/documents/mines-resources/safety-and-health/legislation,-standards-and-guidelines/recognised-standards-coal-mines/recognised-standard-18.pdf": {
+      "filename": "RS18_recognised-standard-18.pdf",
+      "etag": "",
+      "last_modified": "Wed, 27 Oct 2021 01:10:23 GMT",
+      "content_length": 0,
+      "sha256": "87a9b4fa9d2c13ac4ae85dad71eb4ec3b53dd01d71b5ec3fc4e54a0d315dbef5",
+      "updated_at": "2025-09-14 03:03:50"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0008/1453175/recognised-standard-19-mine-roads.pdf": {
+      "filename": "RS19_recognised-standard-19-mine-roads.pdf",
+      "etag": "W/\"5d5c9a84-e786a",
+      "last_modified": "Wed, 21 Aug 2019 01:12:36 GMT",
+      "content_length": 0,
+      "sha256": "ad0c997bada442addf357ab2d149d83e58ab824d05c4d76da14fb471a57ded84",
+      "updated_at": "2025-09-14 03:03:52"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0005/1462685/recognised-standard-20-dust-control-surface-mines.pdf": {
+      "filename": "RS20_recognised-standard-20-dust-control-surface-mines.pdf",
+      "etag": "W/\"5ddf557c-2481b2",
+      "last_modified": "Thu, 28 Nov 2019 05:05:00 GMT",
+      "content_length": 0,
+      "sha256": "f529a54482069c4d6cd713936a1b0a51bb2484e12e95331a89d644073aa6c018",
+      "updated_at": "2025-09-14 03:03:55"
+    },
+    "https://www.rshq.qld.gov.au/resources/documents/mines-resources/safety-and-health/legislation,-standards-and-guidelines/recognised-standards-coal-mines/Recognised-Standard-RS-20-Summary-Report.pdf": {
+      "filename": "RS20_Recognised-Standard-RS-20-Summary-Report.pdf",
+      "etag": "",
+      "last_modified": "Thu, 15 Sep 2022 03:54:34 GMT",
+      "content_length": 0,
+      "sha256": "ca3b3ca241ae96695c508b99ba444637ea6e9fb14bb573e937a2acf0fc484d71",
+      "updated_at": "2025-09-14 03:03:57"
+    },
+    "https://www.rshq.qld.gov.au/resources/documents/mines-resources/recognised-standard-21-underground-explosion-barriers.pdf": {
+      "filename": "RS21_recognised-standard-21-underground-explosion-barriers.pdf",
+      "etag": "",
+      "last_modified": "Tue, 14 Dec 2021 23:28:05 GMT",
+      "content_length": 0,
+      "sha256": "3f90624acd4dc308342c28e9f0825a25fa8465ab421c71775c75f322d6d61827",
+      "updated_at": "2025-09-14 03:03:59"
+    },
+    "https://www.rshq.qld.gov.au/resources/documents/mines-resources/safety-and-health/legislation,-standards-and-guidelines/recognised-standards-coal-mines/recognised-standard-22.pdf": {
+      "filename": "RS22_recognised-standard-22.pdf",
+      "etag": "",
+      "last_modified": "Fri, 27 Aug 2021 02:37:31 GMT",
+      "content_length": 0,
+      "sha256": "df6c50b02190c44bff9334bfc87d31b557a9f03713206c0406829bd96b7baffa",
+      "updated_at": "2025-09-14 03:04:01"
+    },
+    "https://www.rshq.qld.gov.au/resources/documents/mines-resources/safety-and-health/legislation,-standards-and-guidelines/recognised-standards-coal-mines/recognised-standard-23.pdf": {
+      "filename": "RS23_recognised-standard-23.pdf",
+      "etag": "",
+      "last_modified": "Thu, 21 Sep 2023 03:22:50 GMT",
+      "content_length": 0,
+      "sha256": "2aa7ab6ce21bd8fa87e28971094523df3168de8242001f508adef244ba6d1758",
+      "updated_at": "2025-09-14 03:04:08"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0018/240336/qgl1-guideline.pdf": {
+      "filename": "qgl1-guideline.pdf",
+      "etag": "W/\"55654b9e-8c99d",
+      "last_modified": "Wed, 27 May 2015 04:44:14 GMT",
+      "content_length": 0,
+      "sha256": "e3912117379343a75ca2b2fb395f00ed6070615dffa7e92ed6ca890a5a597ff9",
+      "updated_at": "2025-09-14 03:04:09"
+    },
+    "https://www.rshq.qld.gov.au/resources/documents/occupational-health-and-hygiene/qgl02-guideline.pdf": {
+      "filename": "qgl02-guideline.pdf",
+      "etag": "",
+      "last_modified": "Mon, 10 May 2021 00:53:47 GMT",
+      "content_length": 0,
+      "sha256": "c3dedd8ec829fba73357bcac2930b2b6fe9314e64907c3a020d13f5b05cd5c4f",
+      "updated_at": "2025-09-14 03:04:12"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0011/1398836/mmq-guide-for-reporting-oh-data.pdf": {
+      "filename": "mmq-guide-for-reporting-oh-data.pdf",
+      "etag": "W/\"5c809ce3-acb76",
+      "last_modified": "Thu, 07 Mar 2019 04:24:03 GMT",
+      "content_length": 0,
+      "sha256": "b576ba5a185b3e4555ac2d50ce268a1665e02d7104fe34dfd7a84c4e158163ec",
+      "updated_at": "2025-09-14 03:04:13"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0012/1398837/mmq-reporting-classes.pdf": {
+      "filename": "mmq-reporting-classes.pdf",
+      "etag": "W/\"5b87645b-5bd03",
+      "last_modified": "Thu, 30 Aug 2018 03:28:27 GMT",
+      "content_length": 0,
+      "sha256": "884f58b153410922529a764936c3262a449117aa8d3f3b7f0ddc29f5c5e3fc21",
+      "updated_at": "2025-09-14 03:04:13"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0011/1450298/qgl03-hazardous-chemicals.pdf": {
+      "filename": "qgl03-hazardous-chemicals.pdf",
+      "etag": "W/\"5d311575-2a9af9",
+      "last_modified": "Fri, 19 Jul 2019 00:57:25 GMT",
+      "content_length": 0,
+      "sha256": "c2f428846c4d877c9e4617d39c5fc3a00cedd8f26801c613d74b992e93eb5b45",
+      "updated_at": "2025-09-14 03:04:26"
+    },
+    "https://www.rshq.qld.gov.au/resources/documents/occupational-health-and-hygiene/qgl04-guideline.pdf": {
+      "filename": "qgl04-guideline.pdf",
+      "etag": "",
+      "last_modified": "Mon, 10 May 2021 00:53:22 GMT",
+      "content_length": 0,
+      "sha256": "975b0579296d8dff5bbad356f177712cf9a37ae783aa86d09f5aac28a90924df",
+      "updated_at": "2025-09-14 03:04:29"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0005/240566/qld-guidance-note-exploration-safety.pdf": {
+      "filename": "qld-guidance-note-exploration-safety.pdf",
+      "etag": "W/\"55654cb5-17f396",
+      "last_modified": "Wed, 27 May 2015 04:48:53 GMT",
+      "content_length": 0,
+      "sha256": "6cb833f90542a562152ed87ee0cfc886a1dce64e1f76202329131e0d77fb4cad",
+      "updated_at": "2025-09-14 03:04:32"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0009/1438398/qld-guidance-note-qgn02-solation-of-plant.pdf": {
+      "filename": "qld-guidance-note-qgn02-solation-of-plant.pdf",
+      "etag": "W/\"5c86f072-ca16d",
+      "last_modified": "Mon, 11 Mar 2019 23:34:10 GMT",
+      "content_length": 0,
+      "sha256": "8f764092cc4a232fb1fefdd0fb2f4bb6f604fe79e2462a0639e05b0103262b71",
+      "updated_at": "2025-09-14 03:04:33"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0013/240340/qld-guidance-note-05.pdf": {
+      "filename": "qld-guidance-note-05.pdf",
+      "etag": "W/\"5b98728b-70298",
+      "last_modified": "Wed, 12 Sep 2018 01:57:31 GMT",
+      "content_length": 0,
+      "sha256": "dd6b1fbdd73d31f5aea745293ed804699fb19832e3f4bc8d054f72c026767c42",
+      "updated_at": "2025-09-14 03:04:34"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0015/240342/qld-guidance-note-08.pdf": {
+      "filename": "qld-guidance-note-08.pdf",
+      "etag": "W/\"5caaa85b-907cc",
+      "last_modified": "Mon, 08 Apr 2019 01:48:11 GMT",
+      "content_length": 0,
+      "sha256": "a902bbaa5706a8bee76ce0ed4fb94baa25ddc9c741950e780a2d9098925fc8fb",
+      "updated_at": "2025-09-14 03:04:35"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0016/240343/qld-guidance-note-09.pdf": {
+      "filename": "qld-guidance-note-09.pdf",
+      "etag": "W/\"5b987365-98246",
+      "last_modified": "Wed, 12 Sep 2018 02:01:09 GMT",
+      "content_length": 0,
+      "sha256": "5f048b280c6ce074a0184cc221ee3ef5fa2c360e09c4d790d10eebbea91f3660",
+      "updated_at": "2025-09-14 03:04:37"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0017/240353/qld-guidance-note-10.pdf": {
+      "filename": "qld-guidance-note-10.pdf",
+      "etag": "W/\"5b98832d-12c6aa",
+      "last_modified": "Wed, 12 Sep 2018 03:08:29 GMT",
+      "content_length": 0,
+      "sha256": "9c6bc418c198398cc6c0bf772869a19374725074773cb08bdc721ddedabfe440",
+      "updated_at": "2025-09-14 03:04:40"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0018/240354/qld-guidance-note-11.pdf": {
+      "filename": "qld-guidance-note-11.pdf",
+      "etag": "W/\"5caaa849-c4e52",
+      "last_modified": "Mon, 08 Apr 2019 01:47:53 GMT",
+      "content_length": 0,
+      "sha256": "55cfe1b24b9365a7747a5aee64957ef803b2e7ddfca8fbe75d8cb72e1c915748",
+      "updated_at": "2025-09-14 03:04:43"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0019/240355/qld-guidance-note-13.pdf": {
+      "filename": "qld-guidance-note-13.pdf",
+      "etag": "W/\"5b9883d8-83abf",
+      "last_modified": "Wed, 12 Sep 2018 03:11:20 GMT",
+      "content_length": 0,
+      "sha256": "890382ba78b26ffa8bce4d39328c09d93417a373e2d801ecac530cee439c0d2c",
+      "updated_at": "2025-09-14 03:04:44"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0020/240356/qld-guidance-note-14.pdf": {
+      "filename": "qld-guidance-note-14.pdf",
+      "etag": "W/\"5b988456-10a0f7",
+      "last_modified": "Wed, 12 Sep 2018 03:13:26 GMT",
+      "content_length": 0,
+      "sha256": "eb7b4e153e8dd2b68499609877341d36bfff54c38d7a2698636ec0d484751a49",
+      "updated_at": "2025-09-14 03:04:47"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0003/240357/qld-guidance-note-15.pdf": {
+      "filename": "qld-guidance-note-15.pdf",
+      "etag": "W/\"5b98849c-b4d7d",
+      "last_modified": "Wed, 12 Sep 2018 03:14:36 GMT",
+      "content_length": 0,
+      "sha256": "160b96b249d680f42029ac7bc991a304174abeea6c9da7d211d252d3a058c02d",
+      "updated_at": "2025-09-14 03:04:49"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0004/240358/qld-guidance-note-16.pdf": {
+      "filename": "qld-guidance-note-16.pdf",
+      "etag": "W/\"5b9884d7-20fc34",
+      "last_modified": "Wed, 12 Sep 2018 03:15:35 GMT",
+      "content_length": 0,
+      "sha256": "f8b3d537ee6209dd7088cde31560bfb4a98aeb0d48d098184528a9e220b595af",
+      "updated_at": "2025-09-14 03:04:53"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0005/240359/qld-guidance-note-17.pdf": {
+      "filename": "qld-guidance-note-17.pdf",
+      "etag": "W/\"5b988597-1c9e16",
+      "last_modified": "Wed, 12 Sep 2018 03:18:47 GMT",
+      "content_length": 0,
+      "sha256": "bb148cd7fe7ea3bc1c6d310b56de097f215fdecd7d09153b8299b072bb8cbc21",
+      "updated_at": "2025-09-14 03:04:57"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0016/240361/qld-guidance-note-18.pdf": {
+      "filename": "qld-guidance-note-18.pdf",
+      "etag": "W/\"67e6307d-9c3bf",
+      "last_modified": "Fri, 28 Mar 2025 05:15:41 GMT",
+      "content_length": 0,
+      "sha256": "0254dd6f0e8b65b6de8f948d48e93d723c94edbd0385fe3ca8417b8279203322",
+      "updated_at": "2025-09-14 03:04:58"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0017/240362/qld-guidance-note-19.pdf": {
+      "filename": "qld-guidance-note-19.pdf",
+      "etag": "W/\"5b9885db-9d890",
+      "last_modified": "Wed, 12 Sep 2018 03:19:55 GMT",
+      "content_length": 0,
+      "sha256": "6b4e2e4ab869f48db78cc0c4bd3a5bd785b55b53905cee6c0ea78d68509ae9e1",
+      "updated_at": "2025-09-14 03:05:00"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0010/212500/qld-guidance-note-20-mgmt-oxides-nitrogen.pdf": {
+      "filename": "qld-guidance-note-20-mgmt-oxides-nitrogen.pdf",
+      "etag": "W/\"59f152db-27fc9e",
+      "last_modified": "Thu, 26 Oct 2017 03:13:31 GMT",
+      "content_length": 0,
+      "sha256": "22ed7d1e409d2c62d8ecae73a3b09013939232a5f6ed18badecebb3629b3354e",
+      "updated_at": "2025-09-14 03:05:06"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0019/240364/qld-guidance-note-21.pdf": {
+      "filename": "qld-guidance-note-21.pdf",
+      "etag": "W/\"5b988600-97a39",
+      "last_modified": "Wed, 12 Sep 2018 03:20:32 GMT",
+      "content_length": 0,
+      "sha256": "b5c238c8638b2a5adac4c7fd09ab8b18b37b57799fc7eba8aeda1299fe47f1a3",
+      "updated_at": "2025-09-14 03:05:09"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0006/240369/qld-guidance-note-22.pdf": {
+      "filename": "qld-guidance-note-22.pdf",
+      "etag": "W/\"5bd2860e-17e457",
+      "last_modified": "Fri, 26 Oct 2018 03:12:14 GMT",
+      "content_length": 0,
+      "sha256": "7da1deef4b8fb863496a191e4a16488cfb5a387fabc34cd6874109fb126ff6ac",
+      "updated_at": "2025-09-14 03:05:11"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0017/242054/prevent-poster.pdf": {
+      "filename": "prevent-poster.pdf",
+      "etag": "W/\"556686ef-15ea01",
+      "last_modified": "Thu, 28 May 2015 03:09:35 GMT",
+      "content_length": 0,
+      "sha256": "8fc7833b7c72cc7d18ad20a2b54f7d9ad65b09e60b791577e79d5da8ce337845",
+      "updated_at": "2025-09-14 03:05:11"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0020/242057/protect-your-hearing-poster.pdf": {
+      "filename": "protect-your-hearing-poster.pdf",
+      "etag": "W/\"556687b4-2eb1c5",
+      "last_modified": "Thu, 28 May 2015 03:12:52 GMT",
+      "content_length": 0,
+      "sha256": "b64e30f751b660e561d79ef85094404972ee996a20bf3e12ca51ee89ead3b059",
+      "updated_at": "2025-09-14 03:05:12"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0006/305466/qld-guidance-note-23.pdf": {
+      "filename": "qld-guidance-note-23.pdf",
+      "etag": "W/\"5b988b76-942ed",
+      "last_modified": "Wed, 12 Sep 2018 03:43:50 GMT",
+      "content_length": 0,
+      "sha256": "96fe99cd4819b11145793eade54532edf82bf94a5419099ba1fc675f2d4d6501",
+      "updated_at": "2025-09-14 03:05:12"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0008/964277/qld-guidance-note-25.pdf": {
+      "filename": "qld-guidance-note-25.pdf",
+      "etag": "W/\"58477b97-2fca5",
+      "last_modified": "Wed, 07 Dec 2016 03:01:43 GMT",
+      "content_length": 0,
+      "sha256": "315de03fb7b2938924e8e6e91851f6814492bfa86a8c97f1266ff5b3373eda49",
+      "updated_at": "2025-09-14 03:05:14"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0003/1258950/qld-guidance-note-26.pdf": {
+      "filename": "qld-guidance-note-26.pdf",
+      "etag": "W/\"595ed8d3-42956",
+      "last_modified": "Fri, 07 Jul 2017 00:41:55 GMT",
+      "content_length": 0,
+      "sha256": "6982825b6ea1cfbace0bc6e842e9c0af643bbb2ecd1cd065b4982728d1d6fc6c",
+      "updated_at": "2025-09-14 03:05:15"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0007/1346821/qld-guidance-note-27.pdf": {
+      "filename": "qld-guidance-note-27.pdf",
+      "etag": "W/\"66455891-d47cd",
+      "last_modified": "Thu, 16 May 2024 00:51:29 GMT",
+      "content_length": 0,
+      "sha256": "8424524b1bd3ed721085856ea6a41cbab858563d18cf68fbf3c3d9049744b027",
+      "updated_at": "2025-09-14 03:05:17"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0008/1346822/qld-guidance-note-28.pdf": {
+      "filename": "qld-guidance-note-28.pdf",
+      "etag": "W/\"5b988bc2-9a67e",
+      "last_modified": "Wed, 12 Sep 2018 03:45:06 GMT",
+      "content_length": 0,
+      "sha256": "4c97b886904f318d19d2827ccfe04bd1e9c925e1c7a495d85371065947f94dc1",
+      "updated_at": "2025-09-14 03:05:18"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0009/1346823/qld-guidance-note-29.pdf": {
+      "filename": "qld-guidance-note-29.pdf",
+      "etag": "W/\"5b988be3-afc72",
+      "last_modified": "Wed, 12 Sep 2018 03:45:39 GMT",
+      "content_length": 0,
+      "sha256": "99ccd3fa19efdae204ef72e159be9fddab51cebe4dace8063c2aa77d696d55b2",
+      "updated_at": "2025-09-14 03:05:20"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0008/1384190/qgn-30.1-shaft-construction.pdf": {
+      "filename": "qgn-30.1-shaft-construction.pdf",
+      "etag": "W/\"5abc74a3-445de",
+      "last_modified": "Thu, 29 Mar 2018 05:07:47 GMT",
+      "content_length": 0,
+      "sha256": "ec9bdac842cbdddc890393327b146bca3644031630951612cc3e5fb808d96c01",
+      "updated_at": "2025-09-14 03:05:21"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0009/1384191/qgn-30.2-shaft-sink-design.pdf": {
+      "filename": "qgn-30.2-shaft-sink-design.pdf",
+      "etag": "W/\"5abc74d3-e3042",
+      "last_modified": "Thu, 29 Mar 2018 05:08:35 GMT",
+      "content_length": 0,
+      "sha256": "6739594e84c098d55f0fcbb05fbfd587bfd1b0dc65664abe62a3447991be8c15",
+      "updated_at": "2025-09-14 03:05:23"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0010/1384192/qgn-30.3-shaft-sink-operations.pdf": {
+      "filename": "qgn-30.3-shaft-sink-operations.pdf",
+      "etag": "W/\"5abc7501-24d8da",
+      "last_modified": "Thu, 29 Mar 2018 05:09:21 GMT",
+      "content_length": 0,
+      "sha256": "3417077a51b0cfc93c67cf5928c7daffdf3ff9d367af98fb4fe0fd03ff86f71b",
+      "updated_at": "2025-09-14 03:05:26"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0005/1407785/qld-guidance-note-31.pdf": {
+      "filename": "qld-guidance-note-31.pdf",
+      "etag": "W/\"5eba21fe-9d484",
+      "last_modified": "Tue, 12 May 2020 04:11:42 GMT",
+      "content_length": 0,
+      "sha256": "5e9a22c37b341cad141711771cf967cb9a85c3dfed9be048edace2c36f521f15",
+      "updated_at": "2025-09-14 03:05:29"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0019/242056/protect-at-work-home-poster.pdf": {
+      "filename": "protect-at-work-home-poster.pdf",
+      "etag": "W/\"55668748-12043f",
+      "last_modified": "Thu, 28 May 2015 03:11:04 GMT",
+      "content_length": 0,
+      "sha256": "9dbf1b70531fce0ab1d443f1b02e50af2a37171c3ddee03aff6452831c054f12",
+      "updated_at": "2025-09-14 03:05:30"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0003/1594812/QGN32-Managing-Heat-Exposure-in-Surface-Coal-Mines-and-Surface-Areas-of-Underground-Coal-Mines.pdf": {
+      "filename": "QGN32-Managing-Heat-Exposure-in-Surface-Coal-Mines-and-Surface-Areas-of-Underground-Coal-Mines.pdf",
+      "etag": "W/\"61e9ed9e-3e2961",
+      "last_modified": "Thu, 20 Jan 2022 23:17:50 GMT",
+      "content_length": 0,
+      "sha256": "130d1cc82538d83a8fb87782530075850ff338ed51dd5f19f8d06f9ee3e0733c",
+      "updated_at": "2025-09-14 03:05:34"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0012/1925895/Summary-report-of-audits-and-inspections-QGN32-Heat.pdf": {
+      "filename": "Summary-report-of-audits-and-inspections-QGN32-Heat.pdf",
+      "etag": "W/\"66e37f2d-11486b",
+      "last_modified": "Thu, 12 Sep 2024 23:54:21 GMT",
+      "content_length": 0,
+      "sha256": "456d18c87e450d8e979a87887fca79e0724ce2f5b277a6028f374790ba19f7aa",
+      "updated_at": "2025-09-14 03:05:35"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0004/1595524/QGN33-Autonomous-...-machinery-...-in-coal-mines.pdf": {
+      "filename": "QGN33-Autonomous-...-machinery-...-in-coal-mines.pdf",
+      "etag": "W/\"61fa1181-5abbd",
+      "last_modified": "Wed, 02 Feb 2022 05:07:13 GMT",
+      "content_length": 0,
+      "sha256": "da007b90869342fa64341402c721653a0752bc30f291f3a4e883374c0521d147",
+      "updated_at": "2025-09-14 03:05:37"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0004/1800580/QGN34-Managing-dust-ingress-into-electrical-enclosures-and-equipment.pdf": {
+      "filename": "QGN34-Managing-dust-ingress-into-electrical-enclosures-and-equipment.pdf",
+      "etag": "W/\"664558c9-325e75",
+      "last_modified": "Thu, 16 May 2024 00:52:25 GMT",
+      "content_length": 0,
+      "sha256": "6550323a350473307418390c97859647b24d4d3845ba2b568d7c12b30efc0e87",
+      "updated_at": "2025-09-14 03:05:39"
+    },
+    "https://www.rshq.qld.gov.au/__data/assets/pdf_file/0020/2044604/QGN35-The-Integration-of-critical-controls-into-phmp-coal.pdf": {
+      "filename": "QGN35-The-Integration-of-critical-controls-into-phmp-coal.pdf",
+      "etag": "W/\"6838ee02-92d32",
+      "last_modified": "Thu, 29 May 2025 23:30:10 GMT",
+      "content_length": 0,
+      "sha256": "8db6123b1f47451282e500c6121e594f712918fa3f038e94a1863c73613bf4eb",
+      "updated_at": "2025-09-14 03:05:41"
+    },
+    "https://www.rshq.qld.gov.au/resources/documents/mines-resources/underground-coal-mines-vcd-hatch-seals.pdf": {
+      "filename": "underground-coal-mines-vcd-hatch-seals.pdf",
+      "etag": "",
+      "last_modified": "Mon, 23 Aug 2021 02:37:06 GMT",
+      "content_length": 0,
+      "sha256": "ee49122835cdcb3c2908e0b30c695df1176615dcd13cb8300aae87d065e659d4",
+      "updated_at": "2025-09-14 03:05:41"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+# --- 基础 ---
+python-dotenv>=1.0.0
+
+# --- LangChain 核心 & 社区组件 ---
+langchain>=0.3.0
+langchain-community>=0.3.0
+langchain-chroma>=0.1.0
+langchain-openai
+# --- 向量库（本地存储，MVP 用 Chroma）---
+chromadb>=0.5.5
+
+# --- 嵌入模型（SentenceTransformers）---
+sentence-transformers>=3.0.0
+
+# --- PDF 解析 ---
+pypdf>=4.2.0
+
+# --- 可选（后续切换 OpenAI/Azure 时用）---
+openai>=1.35.0
+
+# --- 可选（本地 LLM 用 Ollama 时，Python 客户端）---
+ollama>=0.2.1
+
+requests>=2.31.0
+beautifulsoup4>=4.12.3
+
+

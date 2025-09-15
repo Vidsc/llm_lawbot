@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <title>LawBot Chat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div id="app">
+    <!-- 左侧会话列表 -->
+    <aside id="sidebar">
+      <div class="sidebar-header">
+        <div class="brand">LawBot Chat</div>
+        <button id="new-chat" class="btn btn-primary">＋ 新建会话</button>
+      </div>
+      <div id="session-list" class="session-list"></div>
+      <div class="sidebar-footer">新会话</div>
+    </aside>
+
+    <!-- 右侧聊天区域 -->
+    <main id="main">
+      <header class="chat-header">
+        <div class="chat-title">LawBot • AI assistance</div>
+        <div class="chat-sub"></div>
+      </header>
+
+      <section id="messages" class="messages"></section>
+
+      <!-- 底部输入条 -->
+      <footer id="composer">
+        <textarea id="q" rows="2" placeholder="Type your question..."></textarea>
+        <div class="actions">
+          <button id="send" class="btn btn-primary">Send</button>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <!-- 删除会话确认对话框 -->
+  <div id="confirm" class="modal hidden">
+    <div class="modal-card">
+      <div class="modal-title">删除会话？</div>
+      <div class="modal-sub">该会话的消息将被永久删除，且不可恢复。</div>
+      <div class="modal-actions">
+        <button id="confirm-cancel" class="btn">取消</button>
+        <button id="confirm-ok" class="btn btn-danger">删除</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
