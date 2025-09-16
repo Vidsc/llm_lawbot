@@ -24,4 +24,8 @@ ollama>=0.2.1
 requests>=2.31.0
 beautifulsoup4>=4.12.3
 
+django
+
+langchain_huggingface
+
 
