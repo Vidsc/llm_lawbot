@@ -5,6 +5,20 @@
   <title>LawBot Chat</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="/static/styles.css">
+  <style>
+    .icon-btn {
+      font-size: 20px;
+      line-height: 1;
+      padding: 6px 10px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+    }
+    .icon-btn:hover {
+      background: #f1f5f9;
+      border-radius: 50%;
+    }
+  </style>
 </head>
 <body>
   <div id="app">
@@ -23,6 +37,8 @@
       <header class="chat-header">
         <div class="chat-title">LawBot • AI assistance</div>
         <div class="chat-sub"></div>
+        <!-- ✅ 铃铛按钮（无下划线） -->
+        <button class="icon-btn" title="查看数据更新记录" onclick="window.location.href='/updates/'">🔔</button>
       </header>
 
       <section id="messages" class="messages"></section>
