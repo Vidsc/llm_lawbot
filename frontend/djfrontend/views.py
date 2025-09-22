@@ -1,7 +1,10 @@
-import json
+# djfrontend/views.py
+import os, json
 from django.http import JsonResponse, HttpRequest
 from django.views.decorators.csrf import csrf_exempt
 from app.rag import answer as rag_answer
+
+MANIFEST = "./data/manifest.json"
 
 @csrf_exempt
 def api_chat(request: HttpRequest):
@@ -20,10 +23,16 @@ def api_chat(request: HttpRequest):
         return JsonResponse({"error": "question is required"}, status=400)
 
     try:
-        print("[api_chat] incoming:", question)  # 观察后端是否进入这里
         result = rag_answer(question, session_id=session_id)
-        print("[api_chat] done, used_retrieval=", result.get("used_retrieval"))
         return JsonResponse(result)
     except Exception as e:
-        # 所有异常都走 JSON，避免 Django 返回 HTML debug 页
         return JsonResponse({"error": str(e)}, status=500)
+
+
+# ✅ 新增接口：返回 manifest.json 的内容
+def api_updates(request: HttpRequest):
+    if not os.path.exists(MANIFEST):
+        return JsonResponse({"items": {}, "checked_at": ""})
+    with open(MANIFEST, "r", encoding="utf-8") as f:
+        m = json.load(f)
+    return JsonResponse(m)
