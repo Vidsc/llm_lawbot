@@ -36,6 +36,14 @@ from app.crawler_qld import (
 from app.ingest import make_docs_for_store
 from app.vectorstore import add_documents
 
+# >>> NEW: 引入消息总线（文件型，无需DB迁移）
+# 确保你已按上条消息把 message_bus.py 放到 app/ 目录下
+try:
+    from app.message_bus import append_message  # 推荐路径
+except Exception:
+    # 如果你的 message_bus.py 不在 app/ 下，请改成实际导入路径
+    from message_bus import append_message  # 兜底
+
 PDF_DIR = "./data/pdfs"
 MANIFEST = "./data/manifest.json"
 
@@ -149,6 +157,8 @@ def main():
         print(f"[parse] found {len(links)} pdf links")
 
         added = updated = skipped = failed = 0
+        # >>> NEW: 记录本轮新增/更新/失败的文件名，便于发消息
+        added_names, updated_names, failed_names = [], [], []
 
         for url, text in links:
             # 1) HEAD/GET headers
@@ -170,6 +180,7 @@ def main():
             ok = download(sess, url, local_path)
             if not ok:
                 failed += 1
+                failed_names.append(filename)  # >>> NEW
                 continue
 
             # 4) sha256 校验变化
@@ -206,13 +217,34 @@ def main():
 
             if record_old:
                 updated += 1
+                updated_names.append(filename)  # >>> NEW
             else:
                 added += 1
+                added_names.append(filename)    # >>> NEW
 
     manifest["items"] = items
     save_manifest(manifest)
     print(f"[done] added={added} updated={updated} skipped={skipped} failed={failed}")
     print(f"[manifest] {os.path.abspath(MANIFEST)}")
+
+    # >>> NEW: 将结果写入消息中心（仅在有新增/更新/失败时推送）
+    try:
+        if added or updated:
+            detail_lines = []
+            if added_names:
+                detail_lines.append("新增：\n- " + "\n- ".join(added_names))
+            if updated_names:
+                detail_lines.append("更新：\n- " + "\n- ".join(updated_names))
+            detail = "\n\n".join(detail_lines)
+            title = f"数据已更新（新增 {added}，更新 {updated}）"
+            append_message(title=title, message=detail, level="success")
+        if failed:
+            title = f"数据更新存在失败（{failed}）"
+            detail = "失败文件：\n- " + "\n- ".join(failed_names) if failed_names else ""
+            append_message(title=title, message=detail, level="warning")
+    except Exception as e:
+        # 不影响主流程
+        print(f"[message_bus] append failed: {e}")
 
 if __name__ == "__main__":
     main()
