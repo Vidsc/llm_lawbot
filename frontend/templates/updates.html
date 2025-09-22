@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <title>数据更新记录</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/static/styles.css">
+  <style>
+    .no-underline {
+      text-decoration: none;
+      color: inherit;
+    }
+    .no-underline:hover {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header class="chat-header">
+    <div class="chat-title">📑 数据更新记录</div>
+    <a href="/" class="btn btn-ghost no-underline">Back</a>
+  </header>
+
+  <main class="messages" style="padding:20px;">
+    <div id="updates-list">加载中...</div>
+  </main>
+
+  <script>
+    async function loadUpdates(){
+      try{
+        const res = await fetch("/api/updates/");
+        const data = await res.json();
+        const items = data.items || {};
+        let html = `<div>最后检查时间：${data.checked_at || "未知"}</div><ul>`;
+        for (const [url, rec] of Object.entries(items)) {
+          html += `<li>${rec.filename}（更新于 ${rec.updated_at || "?"}）</li>`;
+        }
+        html += "</ul>";
+        document.getElementById("updates-list").innerHTML = html;
+      }catch(e){
+        document.getElementById("updates-list").textContent = "加载失败：" + e.message;
+      }
+    }
+    loadUpdates();
+  </script>
+</body>
+</html>
