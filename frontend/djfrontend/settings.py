@@ -60,5 +60,9 @@ TEMPLATES = [
 ]
 
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [str(FRONTEND_DIR / "static")]
+STATICFILES_DIRS = [
+    str(FRONTEND_DIR / "static"),
+    str(PROJECT_ROOT / "data" / "pdfs"),   # ✅ 新增：暴露本地 PDF
+]
+
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
