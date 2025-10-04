@@ -14,6 +14,11 @@ const els = {
   confirm: $("#confirm"),
   confirmOk: $("#confirm-ok"),
   confirmCancel: $("#confirm-cancel"),
+  toggleLibrary: $("#toggle-library"),
+  libraryPanel: $("#library-panel"),
+  libraryList: $("#library-list"),
+  libCount: $("#lib-count"),
+
 };
 
 let sessions = loadSessions();
@@ -65,6 +70,43 @@ function renderSessionList() {
     els.list.appendChild(div);
   });
 }
+
+let libLoaded = false;
+
+async function loadLibrary(){
+  try{
+    const res = await fetch("/api/updates/");
+    const data = await res.json();
+    const items = data.items || {};
+    const entries = Object.values(items).sort((a,b)=> (a.filename||"").localeCompare(b.filename||""));
+
+    if (els.libCount) els.libCount.textContent = `(${entries.length})`;
+
+    if (!entries.length){
+      els.libraryList.innerHTML = `<div class="lib-empty">暂无文档</div>`;
+      return;
+    }
+
+    els.libraryList.innerHTML = entries.map(rec =>
+      `<a class="lib-item" href="/static/${rec.filename}" target="_blank" title="${rec.filename}">
+         ${rec.filename}
+       </a>`
+    ).join("");
+  }catch(e){
+    els.libraryList.textContent = "加载失败：" + e.message;
+  }finally{
+    libLoaded = true;
+  }
+}
+
+function toggleLibrary(){
+  const open = !els.libraryPanel.classList.contains("open");
+  els.libraryPanel.classList.toggle("open", open);
+  const chev = els.toggleLibrary?.querySelector(".chev");
+  if (chev) chev.classList.toggle("up", open);
+  if (open && !libLoaded) loadLibrary();
+}
+
 
 /* ===== 渲染消息 ===== */
 function renderCurrentSession() {
@@ -197,3 +239,4 @@ els.newChat.addEventListener("click", ()=>{
 els.confirmOk.addEventListener("click", ()=>{ if(pendingDeleteId){ deleteSession(pendingDeleteId); } closeConfirm(); });
 els.confirmCancel.addEventListener("click", closeConfirm);
 els.confirm.addEventListener("click", (e)=>{ if(e.target===els.confirm) closeConfirm(); });
+if (els.toggleLibrary) els.toggleLibrary.addEventListener("click", toggleLibrary);
