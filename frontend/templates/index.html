@@ -24,13 +24,28 @@
   <div id="app">
     <!-- 左侧会话列表 -->
     <aside id="sidebar">
-      <div class="sidebar-header">
-        <div class="brand">LawBot Chat</div>
-        <button id="new-chat" class="btn btn-primary">＋ 新建会话</button>
-      </div>
+  <!-- 顶部栏 -->
+  <div class="sidebar-header">
+    <div class="brand">LawBot Chat</div>
+    <button id="new-chat" class="btn btn-primary">＋ 新建会话</button>
+  </div>
+
+  <!-- 中间分区容器 -->
+  <div class="sidebar-body">
+    <!-- 上半部分：消息提示 -->
+    <div class="message-box">
+      <div class="msg-title">系统消息</div>
+      <div id="message-content">暂无更新</div>
+    </div>
+
+    <!-- 下半部分：会话列表 -->
+    <div class="session-container">
       <div id="session-list" class="session-list"></div>
       <div class="sidebar-footer">新会话</div>
-    </aside>
+    </div>
+  </div>
+</aside>
+
 
     <!-- 右侧聊天区域 -->
     <main id="main">
@@ -65,6 +80,6 @@
     </div>
   </div>
 
-  <script src="/static/app.js"></script>
+  <script src="/static/app.js?v=ref-click-1"></script>
 </body>
 </html>
