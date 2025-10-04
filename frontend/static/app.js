@@ -78,10 +78,16 @@ function renderCurrentSession() {
 
 function appendBubble(role, text, meta){
   const wrap = document.createElement("div");
-  wrap.className = "msg " + (role === "user" ? "user":"bot");
+  wrap.className = "msg " + (role === "user" ? "user" : "bot");
   const bubble = document.createElement("div");
   bubble.className = "bubble";
-  bubble.textContent = text;
+
+  if (role === "bot") {
+    bubble.innerHTML = text;   // 关键：渲染包含 <a> 的 HTML
+  } else {
+    bubble.textContent = text; // 用户消息仍然用纯文本
+  }
+
   wrap.appendChild(bubble);
   els.msgs.appendChild(wrap);
 
@@ -92,6 +98,7 @@ function appendBubble(role, text, meta){
     els.msgs.appendChild(info);
   }
 }
+
 
 /* ===== 发送 ===== */
 async function send(){
