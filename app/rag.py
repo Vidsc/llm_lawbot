@@ -5,6 +5,7 @@ strict References building, and citation de-duplication.
 
 import sys
 import re
+import os  # 新增
 from typing import Dict, List, Tuple
 
 from app.config import settings
@@ -88,6 +89,7 @@ def _decide_use_context(results: List[Dict]) -> Tuple[bool, float, Dict]:
     use_ctx = chosen >= settings.RETRIEVAL_SCORE_THRESHOLD
     return use_ctx, chosen, results[0]["metadata"] if results else {}
 
+
 # --------- inline citation helpers ----------
 _CIT_PATTERN = re.compile(r"\[(\d+)\]")
 
@@ -155,18 +157,46 @@ def _renumber_body_with_mapping(body: str, old_to_new: Dict[int, int]) -> str:
         return f"[{new}]"
     return _CIT_PATTERN.sub(repl, body or "")
 
+import os  # 确保文件顶部有这个
+
 def _build_references_block(unique_cites: List[Dict]) -> str:
     """
-    Build 'References' with one paragraph per unique item: "[n] filename (RSxx) p.xx-yy"
+    参考来源（HTML）：标题 + 有序列表，每项一个可点击链接，形如：
+    参考来源：
+    [1] <a href="/static/xxx.pdf" target="_blank" rel="noopener">filename (RSxx) p.xx-yy</a>
     """
     if not unique_cites:
         return ""
-    paras = []
+
+    lis = []
     for c in unique_cites:
         rs = f" ({c.get('rs_number')})" if c.get('rs_number') else ""
         pages = f" {c.get('page_range')}" if c.get('page_range') else ""
-        paras.append(f"[{c['index']}] {c.get('filename','Unknown')}{rs}{pages}")
-    return "\n\nReferences\n" + "\n\n".join(paras)
+
+        # 构造 href
+        url = c.get("source_url") or c.get("source") or ""
+        href = ""
+        if url.startswith("file://"):
+            filename_only = os.path.basename(url.replace("file://", ""))
+            href = f"/static/{filename_only}"
+        elif url:
+            href = url
+
+        display = f"{c.get('filename','Unknown')}{rs}{pages}".strip()
+        idx = c.get("index", "?")
+
+        if href:
+            item = f"[{idx}] <a href=\"{href}\" target=\"_blank\" rel=\"noopener noreferrer\">{display}</a>"
+        else:
+            item = f"[{idx}] {display}"
+
+        lis.append(f"<li>{item}</li>")
+
+    # 用 <ul> 或 <ol> 均可；这里用 <ul> 保持你截图风格
+    html = "<div><strong>References：</strong></div>\n<ul>\n" + "\n".join(lis) + "\n</ul>"
+    return "\n" + html  # 与正文之间加一个空行
+
+
 
 # --------- main API ---------
 def answer(question: str, session_id: str = "default") -> Dict:
