@@ -27,7 +27,7 @@
   <!-- 顶部栏 -->
   <div class="sidebar-header">
     <div class="brand">LawBot Chat</div>
-    <button id="new-chat" class="btn btn-primary">＋ 新建会话</button>
+    <button id="new-chat" class="btn btn-primary">＋ New Chat</button>
   </div>
 
   <!-- 中间分区容器 -->
@@ -40,8 +40,8 @@
 
     <!-- 下半部分：会话列表 -->
     <div class="session-container">
+        <div class="session-header">Chats</div>
       <div id="session-list" class="session-list"></div>
-      <div class="sidebar-footer">新会话</div>
     </div>
   </div>
 </aside>
@@ -71,11 +71,11 @@
   <!-- 删除会话确认对话框 -->
   <div id="confirm" class="modal hidden">
     <div class="modal-card">
-      <div class="modal-title">删除会话？</div>
-      <div class="modal-sub">该会话的消息将被永久删除，且不可恢复。</div>
+      <div class="modal-title">Delete Chat？</div>
+      <div class="modal-sub">The messages in this conversation will be permanently deleted and cannot be recovered.</div>
       <div class="modal-actions">
-        <button id="confirm-cancel" class="btn">取消</button>
-        <button id="confirm-ok" class="btn btn-danger">删除</button>
+        <button id="confirm-cancel" class="btn">Cancel</button>
+        <button id="confirm-ok" class="btn btn-danger">Delete</button>
       </div>
     </div>
   </div>
