@@ -32,11 +32,19 @@
 
   <!-- 中间分区容器 -->
   <div class="sidebar-body">
-    <!-- 上半部分：消息提示 -->
     <div class="message-box">
-      <div class="msg-title">系统消息</div>
-      <div id="message-content">暂无更新</div>
-    </div>
+  <!-- Library 折叠按钮 -->
+  <button id="toggle-library" class="lib-toggle">
+    Library <span id="lib-count" class="lib-count">(0)</span>
+    <span class="chev">▾</span>
+  </button>
+
+  <!-- 可折叠面板（默认收起） -->
+  <div id="library-panel" class="library-panel">
+    <div id="library-list" class="library-list">（展开后自动加载…）</div>
+  </div>
+</div>
+
 
     <!-- 下半部分：会话列表 -->
     <div class="session-container">
