@@ -14,21 +14,9 @@
       background: transparent;
       cursor: pointer;
     }
-    .icon-btn:hover { background: #f1f5f9; border-radius: 50%; }
-
-    /* 结果面板（限高+自动收起） */
-    #uploadResult{
-      display:none;
-      margin:.5rem 0;
-      padding:.5rem;
-      background:#0f172a;
-      color:#e2e8f0;
-      white-space:pre-wrap;
-      border:1px solid #1f2937;
-      border-radius:6px;
-      font-size:12px;
-      max-height:160px;   /* 限高 */
-      overflow:auto;      /* 超出滚动 */
+    .icon-btn:hover {
+      background: #f1f5f9;
+      border-radius: 50%;
     }
   </style>
 </head>
@@ -36,47 +24,51 @@
   <div id="app">
     <!-- 左侧会话列表 -->
     <aside id="sidebar">
-      <div class="sidebar-header">
-        <div class="brand">LawBot Chat</div>
-        <button id="new-chat" class="btn btn-primary">＋ New Chat</button>
-      </div>
+  <!-- 顶部栏 -->
+  <div class="sidebar-header">
+    <div class="brand">LawBot Chat</div>
+    <button id="new-chat" class="btn btn-primary">＋ New Chat</button>
+  </div>
 
-      <div class="sidebar-body">
-        <div class="message-box">
-          <button id="toggle-library" class="lib-toggle">
-            Library <span id="lib-count" class="lib-count">(0)</span>
-            <span class="chev">▾</span>
-          </button>
+  <!-- 中间分区容器 -->
+  <div class="sidebar-body">
+    <div class="message-box">
+  <!-- Library 折叠按钮 -->
+  <button id="toggle-library" class="lib-toggle">
+    Library <span id="lib-count" class="lib-count">(0)</span>
+    <span class="chev">▾</span>
+  </button>
 
-          <div id="library-panel" class="library-panel">
-            <div id="library-list" class="library-list">（展开后自动加载…）</div>
-          </div>
-        </div>
+  <!-- 可折叠面板（默认收起） -->
+  <div id="library-panel" class="library-panel">
+    <div id="library-list" class="library-list">（展开后自动加载…）</div>
+  </div>
+</div>
 
-        <div class="session-container">
-          <div class="session-header">Chats</div>
-          <div id="session-list" class="session-list"></div>
-        </div>
-      </div>
-    </aside>
+
+    <!-- 下半部分：会话列表 -->
+    <div class="session-container">
+        <div class="session-header">Chats</div>
+      <div id="session-list" class="session-list"></div>
+    </div>
+  </div>
+</aside>
+
 
     <!-- 右侧聊天区域 -->
     <main id="main">
       <header class="chat-header">
         <div class="chat-title">LawBot • AI assistance</div>
         <div class="chat-sub"></div>
+        <!-- ✅ 铃铛按钮（无下划线） -->
         <button class="icon-btn" title="查看数据更新记录" onclick="window.location.href='/updates/'">🔔</button>
       </header>
 
       <section id="messages" class="messages"></section>
 
-      <!-- 上传结果（会自动收起） -->
-      <pre id="uploadResult"></pre>
-
-      <!-- 底部输入条：上传按钮在输入框左边 -->
-      <footer id="composer" style="display:flex; align-items:flex-end; gap:.5rem;">
-        <button id="upload-btn-inline" class="btn" style="white-space:nowrap;">Upload Files</button>
-        <textarea id="q" rows="2" placeholder="Type your question..." style="flex:1;"></textarea>
+      <!-- 底部输入条 -->
+      <footer id="composer">
+        <textarea id="q" rows="2" placeholder="Type your question..."></textarea>
         <div class="actions">
           <button id="send" class="btn btn-primary">Send</button>
         </div>
@@ -96,49 +88,6 @@
     </div>
   </div>
 
-  <!-- 隐藏文件输入 -->
-  <input id="upload-input" type="file" accept="application/pdf" multiple style="display:none;">
-
   <script src="/static/app.js?v=ref-click-1"></script>
-
-  <!-- 上传逻辑：成功后显示简短信息，3 秒自动隐藏 -->
-  <script>
-    (function () {
-      const input = document.getElementById('upload-input');
-      const btn = document.getElementById('upload-btn-inline');
-      const out  = document.getElementById('uploadResult');
-
-      function openPicker() { if (input) input.click(); }
-
-      async function uploadFiles(files) {
-        if (!files || !files.length) return;
-        const fd = new FormData();
-        for (const f of files) fd.append('files', f);
-
-        out.style.display = 'block';
-        out.textContent = 'Uploading...';
-
-        try {
-          const res = await fetch('/api/upload/', { method: 'POST', body: fd });
-          const json = await res.json();
-
-          const filesCnt = (json.saved || []).length;
-          const chunksCnt = (json.ingested || []).reduce((s, x) => s + (x.chunks || 0), 0);
-          out.textContent = `Uploaded ${filesCnt} file(s), ${chunksCnt} chunk(s) ingested.`;
-
-          // 可选：刷新 Library
-          if (typeof window.refreshLibrary === 'function') window.refreshLibrary();
-
-          setTimeout(() => { out.style.display = 'none'; }, 3000);
-        } catch (err) {
-          out.textContent = 'Upload failed: ' + err;
-          setTimeout(() => { out.style.display = 'none'; }, 4000);
-        }
-      }
-
-      if (btn) btn.addEventListener('click', openPicker);
-      if (input) input.addEventListener('change', (e) => { uploadFiles(e.target.files); input.value=''; });
-    })();
-  </script>
 </body>
 </html>
