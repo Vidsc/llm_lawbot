@@ -2,7 +2,7 @@
 import os
 from dataclasses import dataclass
 from dotenv import load_dotenv
-
+from pathlib import Path
 # 读取 .env（没有也不报错）
 load_dotenv()
 
@@ -40,3 +40,13 @@ class Settings:
     MAX_CONTEXT_CHARS: int = int(os.getenv("MAX_CONTEXT_CHARS", "6000"))  # 防止上下文过长
 
 settings = Settings()
+
+# Update Documents
+BASE_DIR = Path(__file__).resolve().parents[1]
+DATA_DIR = BASE_DIR / "data"
+PDF_DIR = DATA_DIR / "pdfs"
+VECTOR_DIR = DATA_DIR / "chroma"
+
+PDF_DIR.mkdir(parents=True, exist_ok=True)
+VECTOR_DIR.mkdir(parents=True, exist_ok=True)
+MAX_UPLOAD_SIZE = 50 * 1024 * 1024
