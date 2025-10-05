@@ -13,8 +13,6 @@ from langchain_huggingface import HuggingFaceEmbeddings
 
 from app.config import settings
 
-from typing import Any, Optional
-from pathlib import Path
 
 # 初始化 embedding 模型
 _embeddings = HuggingFaceEmbeddings(
@@ -71,11 +69,3 @@ def search(query: str, k: int = None):
             "score": score
         })
     return results
-
-# Upload Documents
-def get_or_create_vectorstore(
-    persist_dir: Path,
-    embeddings: Any,
-    collection_name: Optional[str] = None,
-) -> Chroma:
-    return get_store()
