@@ -14,61 +14,101 @@
       background: transparent;
       cursor: pointer;
     }
-    .icon-btn:hover {
-      background: #f1f5f9;
-      border-radius: 50%;
+    .icon-btn:hover { background: #f1f5f9; border-radius: 50%; }
+
+    /* 上传结果面板（限高+自动收起） */
+    #uploadResult{
+      display:none;
+      margin:.5rem 0;
+      padding:.5rem;
+      background:#0f172a;
+      color:#e2e8f0;
+      white-space:pre-wrap;
+      border:1px solid #1f2937;
+      border-radius:6px;
+      font-size:12px;
+      max-height:160px;
+      overflow:auto;
     }
+
+    /* User Library 小样式（复用现有库的类名会自动继承主题样式） */
+    .user-lib-header {
+      display:flex; align-items:center; gap:.5rem;
+      width:100%; padding:.6rem .8rem;
+      background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px;
+      font-weight:700; cursor:pointer;
+    }
+    .user-lib-header .count { color:#6b7280; font-weight:500; }
+    .user-lib-header .chev { margin-left:auto; }
+    .user-lib-panel { margin:.5rem 0 .75rem; }
+    .user-lib-list .lib-item{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:.5rem; padding:.55rem .75rem; margin:.4rem 0;
+      background:#fff; border:1px solid #e5e7eb; border-radius:10px;
+    }
+    .user-lib-list .lib-link{ color:#2563eb; text-decoration:none; word-break:break-all; }
+    .btn-icon.trash{ background:transparent; border:none; cursor:pointer; font-size:16px; }
+    .muted{ color:#9ca3af; padding:.5rem .25rem; }
   </style>
 </head>
 <body>
   <div id="app">
-    <!-- 左侧会话列表 -->
+    <!-- 左侧侧边栏 -->
     <aside id="sidebar">
-  <!-- 顶部栏 -->
-  <div class="sidebar-header">
-    <div class="brand">LawBot Chat</div>
-    <button id="new-chat" class="btn btn-primary">＋ New Chat</button>
-  </div>
+      <div class="sidebar-header">
+        <div class="brand">LawBot Chat</div>
+        <button id="new-chat" class="btn btn-primary">＋ New Chat</button>
+      </div>
 
-  <!-- 中间分区容器 -->
-  <div class="sidebar-body">
-    <div class="message-box">
-  <!-- Library 折叠按钮 -->
-  <button id="toggle-library" class="lib-toggle">
-    Library <span id="lib-count" class="lib-count">(0)</span>
-    <span class="chev">▾</span>
-  </button>
+      <div class="sidebar-body">
+        <!-- Library（原有） -->
+        <div class="message-box">
+          <button id="toggle-library" class="lib-toggle">
+            Library <span id="lib-count" class="lib-count">(0)</span>
+            <span class="chev">▾</span>
+          </button>
+          <div id="library-panel" class="library-panel">
+            <div id="library-list" class="library-list">（展开后自动加载…）</div>
+          </div>
+        </div>
 
-  <!-- 可折叠面板（默认收起） -->
-  <div id="library-panel" class="library-panel">
-    <div id="library-list" class="library-list">（展开后自动加载…）</div>
-  </div>
-</div>
+        <!-- User Library（新增） -->
+        <div class="message-box">
+          <button id="toggle-user-library" class="user-lib-header">
+            <span>User Library</span>
+            <span id="user-library-count" class="count">(0)</span>
+            <span class="chev">▾</span>
+          </button>
+          <div id="user-library-panel" class="user-lib-panel">
+            <div id="user-library-list" class="user-lib-list"></div>
+          </div>
+        </div>
 
+        <!-- 会话列表 -->
+        <div class="session-container">
+          <div class="session-header">Chats</div>
+          <div id="session-list" class="session-list"></div>
+        </div>
+      </div>
+    </aside>
 
-    <!-- 下半部分：会话列表 -->
-    <div class="session-container">
-        <div class="session-header">Chats</div>
-      <div id="session-list" class="session-list"></div>
-    </div>
-  </div>
-</aside>
-
-
-    <!-- 右侧聊天区域 -->
+    <!-- 右侧聊天主区 -->
     <main id="main">
       <header class="chat-header">
         <div class="chat-title">LawBot • AI assistance</div>
         <div class="chat-sub"></div>
-        <!-- ✅ 铃铛按钮（无下划线） -->
         <button class="icon-btn" title="查看数据更新记录" onclick="window.location.href='/updates/'">🔔</button>
       </header>
 
       <section id="messages" class="messages"></section>
 
-      <!-- 底部输入条 -->
-      <footer id="composer">
-        <textarea id="q" rows="2" placeholder="Type your question..."></textarea>
+      <!-- 上传结果（会自动收起） -->
+      <pre id="uploadResult"></pre>
+
+      <!-- 底部输入条：上传按钮在输入框左边 -->
+      <footer id="composer" style="display:flex; align-items:flex-end; gap:.5rem;">
+        <button id="upload-btn-inline" class="btn" style="white-space:nowrap;">Upload Files</button>
+        <textarea id="q" rows="2" placeholder="Type your question..." style="flex:1;"></textarea>
         <div class="actions">
           <button id="send" class="btn btn-primary">Send</button>
         </div>
@@ -76,7 +116,7 @@
     </main>
   </div>
 
-  <!-- 删除会话确认对话框 -->
+  <!-- 删除会话确认（原有） -->
   <div id="confirm" class="modal hidden">
     <div class="modal-card">
       <div class="modal-title">Delete Chat？</div>
@@ -88,6 +128,134 @@
     </div>
   </div>
 
+  <!-- 隐藏文件输入 -->
+  <input id="upload-input" type="file" accept="application/pdf" multiple style="display:none;">
+
+  <!-- 你项目原有前端逻辑 -->
   <script src="/static/app.js?v=ref-click-1"></script>
+
+  <!-- 上传逻辑（成功后刷新 User Library） -->
+  <script>
+    (function () {
+      const input = document.getElementById('upload-input');
+      const btn   = document.getElementById('upload-btn-inline');
+      const out   = document.getElementById('uploadResult');
+
+      function openPicker() { input && input.click(); }
+
+      async function uploadFiles(files) {
+        if (!files || !files.length) return;
+        const fd = new FormData();
+        for (const f of files) fd.append('files', f);
+
+        out.style.display = 'block';
+        out.textContent = 'Uploading...';
+
+        try {
+          const res  = await fetch('/api/upload/', { method: 'POST', body: fd });
+          const json = await res.json();
+
+          const filesCnt  = (json.saved || []).length;
+          const chunksCnt = (json.ingested || []).reduce((s, x) => s + (x.chunks || 0), 0);
+          out.textContent = `Uploaded ${filesCnt} file(s), ${chunksCnt} chunk(s) ingested.`;
+
+          // 刷新 User Library
+          if (typeof window.refreshUserLibrary === 'function') window.refreshUserLibrary();
+
+          setTimeout(() => { out.style.display = 'none'; }, 3000);
+        } catch (err) {
+          out.textContent = 'Upload failed: ' + err;
+          setTimeout(() => { out.style.display = 'none'; }, 4000);
+        }
+      }
+
+      btn && btn.addEventListener('click', openPicker);
+      input && input.addEventListener('change', (e) => { uploadFiles(e.target.files); input.value=''; });
+    })();
+  </script>
+
+  <!-- User Library：渲染/删除 + 记住展开状态（默认展开） -->
+  <script>
+    (function () {
+      const listEl    = document.getElementById('user-library-list');
+      const panel     = document.getElementById('user-library-panel');
+      const toggleBtn = document.getElementById('toggle-user-library');
+      const countEl   = document.getElementById('user-library-count');
+      const KEY       = 'ui:userLibOpen';
+
+      function setChev(open) {
+        const chev = toggleBtn.querySelector('.chev');
+        if (chev) chev.textContent = open ? '▾' : '▸';
+      }
+      function setOpen(open) {
+        panel.style.display = open ? 'block' : 'none';
+        setChev(open);
+        localStorage.setItem(KEY, open ? '1' : '0');
+        if (open) refreshUserLibrary();
+      }
+
+      async function refreshUserLibrary() {
+        try {
+          const res  = await fetch('/api/user-library/');
+          const json = await res.json();
+          const items = json.items || [];
+          countEl.textContent = `(${items.length})`;
+
+          listEl.innerHTML = '';
+          if (!items.length) {
+            listEl.innerHTML = '<div class="muted">No files</div>';
+            return;
+          }
+
+          for (const it of items) {
+            const li = document.createElement('div');
+            li.className = 'lib-item';
+            li.innerHTML = `
+              <a class="lib-link" href="/static/${it.filename}" target="_blank" rel="noopener">${it.filename}</a>
+              <button class="btn-icon trash" title="Delete" data-fn="${it.filename}">🗑️</button>
+            `;
+            listEl.appendChild(li);
+          }
+        } catch (err) {
+          listEl.innerHTML = `<div style="padding:6px;color:#ef4444;">Load failed: ${err}</div>`;
+        }
+      }
+
+      // 删除（事件委托）
+      listEl.addEventListener('click', async (e) => {
+        const btn = e.target.closest('button.trash');
+        if (!btn) return;
+        const fn = btn.dataset.fn;
+        if (!confirm(`Delete ${fn}?`)) return;
+        try {
+          const r = await fetch(`/api/upload/delete/?filename=${encodeURIComponent(fn)}`, { method: 'DELETE' });
+          const j = await r.json();
+          if (r.ok) {
+            btn.parentElement.remove();
+            const left = listEl.querySelectorAll('.lib-item').length;
+            countEl.textContent = `(${left})`;
+          } else {
+            alert('Delete failed: ' + (j.error || r.status));
+          }
+        } catch (err) {
+          alert('Delete failed: ' + err);
+        }
+      });
+
+      // 折叠按钮
+      toggleBtn.addEventListener('click', () => {
+        const open = panel.style.display === 'none';
+        setOpen(open);
+      });
+
+      // —— 初始化：默认展开；如记忆为收起则按记忆 —— //
+      const saved = localStorage.getItem(KEY);
+      const shouldOpen = (saved === null) ? true : (saved === '1');
+      setOpen(shouldOpen);
+
+      // 暴露刷新函数，便于上传成功后调用
+      window.refreshUserLibrary = refreshUserLibrary;
+    })();
+  </script>
 </body>
 </html>
