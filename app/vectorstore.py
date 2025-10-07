@@ -13,6 +13,8 @@ from langchain_huggingface import HuggingFaceEmbeddings
 
 from app.config import settings
 
+from typing import Any, Optional
+from pathlib import Path
 
 # 初始化 embedding 模型
 _embeddings = HuggingFaceEmbeddings(
@@ -69,3 +71,67 @@ def search(query: str, k: int = None):
             "score": score
         })
     return results
+
+# Upload Documents
+def get_or_create_vectorstore(
+    persist_dir: Path,
+    embeddings: Any,
+    collection_name: Optional[str] = None,
+) -> Chroma:
+    return get_store()
+
+# 用户专用向量库
+_user_vectorstore: Optional[Chroma] = None
+# 创建新的Chroma来获取user的pdfs
+def get_user_store() -> Chroma:
+    global _user_vectorstore
+    if _user_vectorstore is None:
+        os.makedirs(settings.USER_CHROMA_DIR, exist_ok=True)
+        _user_vectorstore = Chroma(
+            collection_name=settings.USER_COLLECTION_NAME,
+            embedding_function=_embeddings,
+            persist_directory=settings.USER_CHROMA_DIR,
+        )
+    return _user_vectorstore
+# 添加文档块
+def add_user_documents(docs: List[Dict]) -> None:
+    store = get_user_store()
+    texts = [d["page_content"] for d in docs]
+    metadatas = [d.get("metadata", {}) for d in docs]
+    store.add_texts(texts=texts, metadatas=metadatas)
+
+# 相似度检索
+def search_user(query: str, k: int = None) -> List[Dict]:
+    store = get_user_store()
+    k = k or settings.RETRIEVAL_K
+    docs = store.similarity_search_with_score(query, k=k)
+    results: List[Dict] = []
+    for doc, score in docs:
+        results.append({
+            "page_content": doc.page_content,
+            "metadata": doc.metadata,
+            "score": score
+        })
+    return results
+
+def user_index_count() -> int:
+    store = get_user_store()
+    return store._collection.count()
+
+# 删除用户库
+def delete_user_documents_by_filenames(filenames: List[str]) -> int:
+    store = get_user_store()
+    col = store._collection
+    before = col.count()
+
+    # 去重后逐个删除
+    for fn in { (fn or "").strip() for fn in filenames }:
+        if not fn:
+            continue
+        try:
+            col.delete(where={"filename": fn})
+        except Exception:
+            pass
+
+    after = col.count()
+    return max(before - after, 0)
