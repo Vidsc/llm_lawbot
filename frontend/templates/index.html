@@ -18,9 +18,9 @@
 
     /* ↑右侧铃铛按钮保留 */
 
-    /* ===== 左侧上半区合并块：Library + My file ===== */
+    /* ===== 左侧上半区合并块：Library + User Library ===== */
     .resources-box{
-      flex: 0 0 50%;              /* 上半区占左栏的一半 */
+      flex: 0 0 30%;              /* 上半区占左栏的一半 */
       padding: 12px 12px 0;
       overflow-y: auto;           /* 只在这层滚动，内部不再出现第二个滚动条 */
       border-bottom: 1px dashed var(--border);
@@ -52,7 +52,7 @@
     .library-list .lib-item{ text-decoration:none; color:#1e40af; font-weight:500; font-size:14px; line-height:1.5; }
     .library-list .lib-item:hover{ text-decoration:underline; }
 
-    /* ===== My file 小样式（与你现有一致） ===== */
+    /* ===== User Library 小样式（与你现有一致） ===== */
     .user-lib-header {
       display:flex; align-items:center; gap:.5rem;
       width:100%; padding:.6rem 1rem .4rem 1rem;
@@ -99,7 +99,7 @@
       </div>
 
       <div class="sidebar-body">
-        <!-- ✅ 上半：把 Library + My file 合并到同一块 -->
+        <!-- ✅ 上半：把 Library + User Library 合并到同一块 -->
         <div class="resources-box">
           <!-- Library（折叠） -->
           <button id="toggle-library" class="lib-toggle">
@@ -111,9 +111,10 @@
             <div id="library-list" class="library-list">（展开后自动加载…）</div>
           </div>
 
-          <!-- My file（折叠） -->
-          <button id="toggle-user-library" class="lib-toggle">
-            My file <span id="user-library-count" class="lib-count">(0)</span>
+          <!-- User Library（折叠） -->
+          <button id="toggle-user-library" class="user-lib-header">
+            <span>User Library</span>
+            <span id="user-library-count" class="count">(0)</span>
             <span class="chev">▾</span>
           </button>
           <div id="user-library-panel" class="user-lib-panel">
@@ -171,7 +172,7 @@
   <!-- 你项目原有前端逻辑 -->
   <script src="/static/app.js?v=merge-lib"></script>
 
-  <!-- 上传逻辑（成功后刷新 My file） -->
+  <!-- 上传逻辑（成功后刷新 User Library） -->
   <script>
     (function () {
       const input = document.getElementById('upload-input');
@@ -196,7 +197,7 @@
           const chunksCnt = (json.ingested || []).reduce((s, x) => s + (x.chunks || 0), 0);
           out.textContent = `Uploaded ${filesCnt} file(s), ${chunksCnt} chunk(s) ingested.`;
 
-          // 刷新 My file
+          // 刷新 User Library
           if (typeof window.refreshUserLibrary === 'function') window.refreshUserLibrary();
 
           setTimeout(() => { out.style.display = 'none'; }, 3000);
@@ -211,7 +212,7 @@
     })();
   </script>
 
-  <!-- My file：渲染/删除 + 记住展开状态（默认展开） -->
+  <!-- User Library：渲染/删除 + 记住展开状态（默认展开） -->
   <script>
     (function () {
       const listEl    = document.getElementById('user-library-list');
