@@ -62,7 +62,7 @@ function renderSessionList() {
     div.innerHTML = `
       <div class="session-title">${escapeHtml(s.title || "(未命名)")}</div>
       <div class="session-sub">${escapeHtml(last ? trimForPreview(last.text) : "（未检索到相关的标准，以下为模型通用回答）")}</div>
-      <button class="del" title="删除会话" aria-label="删除会话">🗑</button>
+      <button class="del" title="删除会话" aria-label="删除会话">🗑️</button>
     `;
     const delBtn = div.querySelector(".del");
     delBtn.addEventListener("click", (e)=>{ e.stopPropagation(); askDelete(id); });
