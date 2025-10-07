@@ -5,11 +5,11 @@ strict References building, and citation de-duplication.
 
 import sys
 import re
-import os  # 新增
+import os
 from typing import Dict, List, Tuple
 
 from app.config import settings
-from app.vectorstore import search
+from app.vectorstore import search as search_sys, search_user
 from app.prompts import (
     SYSTEM_PROMPT,
     GEN_SYSTEM_PROMPT,
@@ -17,6 +17,7 @@ from app.prompts import (
     ANSWER_GENERAL,
     make_context_blocks,
 )
+from app import config  # 用于判断用户文件路径
 
 # --------- in-process memory ---------
 _MEMORY: Dict[str, List[Dict[str, str]]] = {}
@@ -157,13 +158,11 @@ def _renumber_body_with_mapping(body: str, old_to_new: Dict[int, int]) -> str:
         return f"[{new}]"
     return _CIT_PATTERN.sub(repl, body or "")
 
-import os  # 确保文件顶部有这个
-
 def _build_references_block(unique_cites: List[Dict]) -> str:
     """
     参考来源（HTML）：标题 + 有序列表，每项一个可点击链接，形如：
     参考来源：
-    [1] <a href="/static/xxx.pdf" target="_blank" rel="noopener">filename (RSxx) p.xx-yy</a>
+    [1] <a href="/user-files/xxx.pdf" ...> 或 <a href="/static/xxx.pdf" ...>
     """
     if not unique_cites:
         return ""
@@ -178,9 +177,14 @@ def _build_references_block(unique_cites: List[Dict]) -> str:
         href = ""
         if url.startswith("file://"):
             filename_only = os.path.basename(url.replace("file://", ""))
-            href = f"/static/{filename_only}"
+            # 如果该文件在用户目录，则走 /user-files/，否则退回 /static/
+            user_path = config.USER_PDF_DIR / filename_only
+            if user_path.exists():
+                href = f"/user-files/{filename_only}"
+            else:
+                href = f"/static/{filename_only}"
         elif url:
-            href = url
+            href = url  # http(s)
 
         display = f"{c.get('filename','Unknown')}{rs}{pages}".strip()
         idx = c.get("index", "?")
@@ -192,10 +196,36 @@ def _build_references_block(unique_cites: List[Dict]) -> str:
 
         lis.append(f"<li>{item}</li>")
 
-    # 用 <ul> 或 <ol> 均可；这里用 <ul> 保持你截图风格
     html = "<div><strong>References：</strong></div>\n<ul>\n" + "\n".join(lis) + "\n</ul>"
     return "\n" + html  # 与正文之间加一个空行
 
+
+# --------- merge sys & user hits ----------
+def _merge_results(sys_hits: List[Dict], user_hits: List[Dict], k: int) -> List[Dict]:
+    """
+    Merge two hit lists, put user hits first, dedup by (filename, page_range, rs_number),
+    then sort by ascending distance score (smaller = more similar).
+    """
+    def key_fn(r: Dict) -> Tuple[str, str, str]:
+        md = r.get("metadata", {}) or {}
+        return (
+            md.get("filename", "") or "",
+            md.get("page_range", "") or "",
+            md.get("rs_number", "") or "",
+        )
+
+    merged: List[Dict] = []
+    seen = set()
+
+    for r in (user_hits + sys_hits):  # user first
+        k2 = key_fn(r)
+        if k2 in seen:
+            continue
+        seen.add(k2)
+        merged.append(r)
+
+    merged.sort(key=lambda r: r.get("score", 1e9))
+    return merged[:k]
 
 
 # --------- main API ---------
@@ -203,8 +233,10 @@ def answer(question: str, session_id: str = "default") -> Dict:
     _append_message(session_id, "user", question)
     history_text = _recent_history_text(session_id)
 
-    # 1) retrieve
-    results = search(question, k=settings.RETRIEVAL_K)
+    # 1) retrieve（合并系统库与用户库）
+    sys_hits  = search_sys(question, k=settings.RETRIEVAL_K)
+    user_hits = search_user(question, k=settings.RETRIEVAL_K)
+    results   = _merge_results(sys_hits, user_hits, settings.RETRIEVAL_K)
 
     # 2) decide
     use_ctx, chosen_score, _ = _decide_use_context(results)
@@ -285,3 +317,4 @@ def _cli():
 
 if __name__ == "__main__":
     _cli()
+
