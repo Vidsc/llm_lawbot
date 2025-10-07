@@ -2,7 +2,7 @@
 import os
 from dataclasses import dataclass
 from dotenv import load_dotenv
-
+from pathlib import Path
 # 读取 .env（没有也不报错）
 load_dotenv()
 
@@ -14,6 +14,10 @@ class Settings:
     # —— 向量库（MVP 用 Chroma 本地目录）—— #
     CHROMA_DIR: str = os.getenv("CHROMA_DIR", "./data/chroma")
     COLLECTION_NAME: str = os.getenv("COLLECTION_NAME", "law_rs")
+
+    # 用户专用的向量库
+    USER_CHROMA_DIR: str = os.getenv("USER_CHROMA_DIR", "./data/chroma_user")
+    USER_COLLECTION_NAME: str = os.getenv("USER_COLLECTION_NAME", "law_user")
 
     # —— 嵌入模型（SentenceTransformers）—— #
     EMBEDDING_MODEL: str = os.getenv("EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
@@ -40,3 +44,18 @@ class Settings:
     MAX_CONTEXT_CHARS: int = int(os.getenv("MAX_CONTEXT_CHARS", "6000"))  # 防止上下文过长
 
 settings = Settings()
+
+# Update Documents
+BASE_DIR = Path(__file__).resolve().parents[1]
+DATA_DIR = BASE_DIR / "data"
+PDF_DIR = DATA_DIR / "pdfs"
+VECTOR_DIR = DATA_DIR / "chroma"
+
+PDF_DIR.mkdir(parents=True, exist_ok=True)
+VECTOR_DIR.mkdir(parents=True, exist_ok=True)
+MAX_UPLOAD_SIZE = 50 * 1024 * 1024
+
+# 用户上传文件 + 用户索引目录
+USER_PDF_DIR = DATA_DIR / "user_pdfs"
+USER_PDF_DIR.mkdir(parents=True, exist_ok=True)
+Path(settings.USER_CHROMA_DIR).mkdir(parents=True, exist_ok=True)
