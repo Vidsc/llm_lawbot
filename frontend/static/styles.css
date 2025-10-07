@@ -99,138 +99,130 @@ body{
 .btn-danger:hover{filter:brightness(0.95)}
 
 /* ===== References 样式优化 ===== */
-.messages .bubble ul {
-  margin: 4px 0;          /* 减小上下间距 */
-  padding-left: 10px;     /* 缩进更小 */
-  list-style: none;       /* 去掉黑点 */
+.messages .bubble ul { margin:4px 0; padding-left:10px; list-style:none; }
+.messages .bubble li { margin:2px 0; }
+.messages .bubble a { color:#1e40af; text-decoration:none; font-weight:500; }
+.messages .bubble a:hover { text-decoration:underline; color:#0f172a; }
+.messages .bubble strong { display:block; margin-bottom:2px; font-weight:600; }
+
+/* ===== 左侧两块布局：上半资源区、下半会话 ===== */
+#sidebar{ display:flex; flex-direction:column; height:100%; background:#fff; }
+:root{
+  --left-top-h: 30%;
+  --left-bottom-h: 70%;
 }
 
-.messages .bubble li {
-  margin: 2px 0;          /* 行距更紧凑 */
-}
-
-.messages .bubble a {
-  color: #1e40af;         /* 柔和蓝色 */
-  text-decoration: none;  /* 无下划线 */
-  font-weight: 500;
-}
-
-.messages .bubble a:hover {
-  text-decoration: underline; /* 悬停时才出现下划线 */
-  color: #0f172a;
-}
-
-.messages .bubble strong {
-  display: block;
-  margin-bottom: 2px;     /* 标题与列表间稍微留一点空间 */
-  font-weight: 600;
-}
-
-/* ====== 分区布局：上半消息，下半会话 ====== */
-#sidebar {
-  display: flex;
-  flex-direction: column;
+.sidebar-body{
+  display: grid !important;
+  grid-template-rows: var(--left-top-h) var(--left-bottom-h) !important;
   height: 100%;
-  border-right: 1px solid var(--border);
-  background: #fff;
+  min-height: 0;
 }
 
-/* 整体两块：上半消息、下半会话 */
-.sidebar-body {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-/* 上半区（固定高度或比例） */
-.message-box {
-  flex: 0 0 25%;                /* 固定占比：高度约 35% */
+/* 上半区（Library / User Library）在自己的区域内滚动 */
+.resources-box{
+  overflow: auto !important;
+  padding: 12px 12px 0;
   border-bottom: 1px dashed var(--border);
-  padding: 12px 16px;
-  overflow-y: auto;
   background: #fff;
 }
 
-/* 下半区：独立滚动 */
-.session-container {
-  flex: 1;
+/* Library 标题（与 Chats 一致，去掉外框） */
+.lib-toggle{
+  width:100%;
+  text-align:left;
+  padding:8px 16px 6px;
+  background:#fff;
+  border:none;
+  border-bottom:1px dashed var(--border);
+  cursor:pointer;
+  font-weight:700;
+  font-size:15px;
+  color:var(--text);
+  display:flex; align-items:center; justify-content:space-between;
+}
+.lib-toggle .chev{ transition:transform .2s; color:var(--muted); }
+.lib-toggle .chev.up{ transform:rotate(-90deg); }
+.lib-count{ margin-left:6px; color:var(--muted); font-weight:400; }
+
+/* Library 内容（不产生第二个滚动条） */
+.library-panel{ max-height:0; overflow:hidden; transition:max-height .25s ease, padding .25s ease; padding:0 16px; }
+.library-panel.open{ max-height:260px; padding:6px 16px 10px; }
+.library-list{ display:flex; flex-direction:column; gap:6px; }
+.lib-item{ padding:6px 8px; border:1px solid var(--border); border-radius:8px; text-decoration:none; color:#1e40af; font-weight:500; }
+.lib-item:hover{ background:#f7fafc; text-decoration:none; }
+.lib-empty{ color:var(--muted); padding:4px 2px; }
+
+/* User Library 标题与内容（与 Library 保持一致风格） */
+.user-lib-header{
+  width:100%;
+  text-align:left;
+  padding:8px 16px 6px;
+  background:#fff;
+  border:none;
+  border-bottom:1px dashed var(--border);
+  cursor:pointer;
+  font-weight:700;
+  font-size:15px;
+  color:var(--text);
+  display:flex; align-items:center; justify-content:space-between;
+}
+.user-lib-header .chev{ transition:transform .2s; color:var(--muted); }
+.user-lib-panel{ margin:.5rem 0 .75rem; padding:0 16px; }
+.user-lib-list .lib-item{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:.5rem; padding:.55rem .75rem; margin:.4rem 0;
+  background:#fff; border:1px solid #e5e7eb; border-radius:10px;
+}
+.user-lib-list .lib-link{ color:#2563eb; text-decoration:none; word-break:break-all; }
+.user-lib-list .lib-link:hover{ text-decoration:underline; }
+.btn-icon.trash{ background:transparent; border:none; cursor:pointer; font-size:16px; }
+.muted{ color:#9ca3af; padding:.5rem .25rem; }
+
+/* ✅ 下半：会话列表（独立滚动） */
+
+/* 下半区（Chats）固定所占比例，并仅让列表滚动 */
+.session-container{
+  overflow: hidden !important;  /* 容器本身不滚动 */
   display: flex;
   flex-direction: column;
-  overflow: hidden;             /* 防止整体滑动 */
+  background: #fff;
 }
-
-.session-list {
+.session-header{
+  position: sticky; top: 0; z-index: 2;
+  padding: 8px 16px 6px; border-bottom: 1px dashed var(--border);
+  background: #fff; font-weight: 700; font-size: 15px; color: var(--text);
+}
+.session-list{
   flex: 1;
-  overflow-y: auto;             /* ✅ 单独滚动 */
+  overflow-y: auto !important;
   padding: 10px 12px;
 }
 
-.sidebar-footer {
-  padding: 12px 16px;
-  color: var(--muted);
-  border-top: 1px dashed var(--border);
+
+/* 统一删除按钮：Chats 与 My file 一样 */
+.session .del,
+.user-lib-list .btn-icon.trash{
+  width:28px !important;
+  height:28px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  border:1px solid var(--border) !important;
+  border-radius:8px !important;
+  background:#fff !important;
+  color:#6b7280 !important;
+  font-size:16px !important;   /* 图标大小 */
+  line-height:1 !important;     /* 去掉多余行高 */
+  padding:0 !important;
+  cursor:pointer !important;
+  transition: background .15s ease, color .15s ease, border-color .15s ease;
 }
 
-/* ====== 会话列表标题 Chats ====== */
-.session-header {
-  font-weight: 700;        /* ✅ 加粗字体 */
-  font-size: 15px;         /* 稍微大一点 */
-  color: var(--text);      /* 主体颜色，区别 muted 灰色 */
-  padding: 8px 16px 6px;
-  border-bottom: 1px dashed var(--border);
-  background: #fff;
-  position: sticky;
-  top: 0;
-  z-index: 2;              /* 滚动时固定 */
+/* 悬停一致 */
+.session .del:hover,
+.user-lib-list .btn-icon.trash:hover{
+  background:#ffecec !important;
+  color:#c53030 !important;
+  border-color:#ffd0d0 !important;
 }
-
-/* ===== Library 折叠区 ===== */
-.lib-toggle{
-  width: 100%;
-  text-align: left;
-  padding: 8px 10px;
-  border: none;
-  font-size: 15px;
-  background: #fff;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: 700;
-}
-.lib-toggle:hover{ background:#f8fafc; }
-.lib-count{ margin-left: 6px; color: var(--muted); font-weight: 400; }
-.lib-toggle .chev{ float: right; transition: transform .2s; }
-.lib-toggle .chev.up{ transform: rotate(180deg); }
-
-/* 折叠面板：默认收起；打开时平滑展开且内部可滚动 */
-.library-panel{
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height .25s ease, padding .25s ease;
-  padding: 0 2px;
-}
-.library-panel.open{
-  max-height: 220px;            /* 展开高度，可按需要调大/调小 */
-  padding: 8px 2px;
-}
-
-.library-list{
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  max-height: 200px;            /* 和上面的 max-height 协同 */
-  overflow: auto;
-}
-
-.lib-item{
-  padding: 6px 8px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  text-decoration: none;
-  color: #1e40af;
-  font-weight: 500;
-}
-.lib-item:hover{
-  background: #f7fafc;
-  text-decoration: none;
-}
-.lib-empty{ color: var(--muted); padding: 4px 2px; }
