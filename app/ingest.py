@@ -9,11 +9,11 @@
 
 import os
 import re
-from typing import List, Dict, Tuple
+from typing import List, Dict, Tuple, Optional
 from pypdf import PdfReader
 
 from app.config import settings
-from app.vectorstore import add_documents
+from app.vectorstore import add_documents,add_user_documents
 
 
 # ====== 可调参数（根据你的 PDF 质量微调） ======
@@ -185,7 +185,50 @@ def ingest_directory(pdf_dir: str = PDF_DIR) -> int:
     print(f"[ingest] 完成。共写入 {total} 块到集合 {settings.COLLECTION_NAME}")
     return total
 
+# Upload Documents
+def ingest_single_pdf_file(file_path: str) -> Optional[int]:
+    abs_path = os.path.abspath(file_path)
+    if (not os.path.exists(abs_path)) or (not abs_path.lower().endswith(".pdf")):
+        return None
 
+    try:
+        docs = make_docs_for_store(abs_path)
+    except Exception as e:
+        print(f"[ingest] parse failed: {abs_path} -> {e}")
+        return None
+
+    if not docs:
+        return 0
+
+    try:
+        add_documents(docs)
+    except Exception as e:
+        print(f"[ingest] vectorstore write failed: {abs_path} -> {e}")
+        return None
+
+    return len(docs)
+
+def ingest_single_pdf_to_user_store(file_path: str) -> Optional[int]:
+    abs_path = os.path.abspath(file_path)
+    if (not os.path.exists(abs_path)) or (not abs_path.lower().endswith(".pdf")):
+        return None
+
+    try:
+        docs = make_docs_for_store(abs_path)
+    except Exception as e:
+        print(f"[ingest-user] parse failed: {abs_path} -> {e}")
+        return None
+
+    if not docs:
+        return 0
+
+    try:
+        add_user_documents(docs)
+    except Exception as e:
+        print(f"[ingest-user] vectorstore write failed: {abs_path} -> {e}")
+        return None
+
+    return len(docs)
 if __name__ == "__main__":
     # 用法（在项目根目录）：
     #   python -m app.ingest
@@ -193,3 +236,4 @@ if __name__ == "__main__":
     #   python app/ingest.py
     os.makedirs(PDF_DIR, exist_ok=True)
     ingest_directory(PDF_DIR)
+
