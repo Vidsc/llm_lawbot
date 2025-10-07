@@ -113,7 +113,7 @@
 
           <!-- User Library（折叠） -->
           <button id="toggle-user-library" class="user-lib-header">
-            <span>User Library</span>
+            <span>My files</span>
             <span id="user-library-count" class="count">(0)</span>
             <span class="chev">▾</span>
           </button>
@@ -249,7 +249,7 @@
             const li = document.createElement('div');
             li.className = 'lib-item';
             li.innerHTML = `
-              <a class="lib-link" href="/static/${it.filename}" target="_blank" rel="noopener">${it.filename}</a>
+              <a class="lib-link" href="/user-files/${it.filename}" target="_blank" rel="noopener">${it.filename}</a>
               <button class="btn-icon trash" title="Delete" data-fn="${it.filename}">🗑️</button>
             `;
             listEl.appendChild(li);
