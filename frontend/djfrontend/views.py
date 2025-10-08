@@ -39,11 +39,28 @@ def api_chat(request: HttpRequest):
 
 # ✅ 返回 manifest.json 的内容（保持不变）
 def api_updates(request: HttpRequest):
-    if not os.path.exists(MANIFEST):
-        return JsonResponse({"items": {}, "checked_at": ""})
-    with open(MANIFEST, "r", encoding="utf-8") as f:
-        m = json.load(f)
-    return JsonResponse(m)
+    MANIFEST = "./data/manifest.json"
+    if os.path.exists(MANIFEST):
+        try:
+            with open(MANIFEST, "r", encoding="utf-8") as f:
+                m = json.load(f)
+            # m["items"] 形如：{ url: { filename, etag, last_modified, content_length, sha256, updated_at } }
+            return JsonResponse({
+                "items": m.get("items", {}),
+                "checked_at": m.get("checked_at", "")
+            })
+        except Exception:
+            pass  # 读失败则走目录回退
+
+    # —— 回退：仅列出文件名（无 updated_at）——
+    pdf_dir = "./data/pdfs"
+    items = {}
+    if not os.path.exists(pdf_dir):
+        os.makedirs(pdf_dir, exist_ok=True)
+    for fname in os.listdir(pdf_dir):
+        if fname.lower().endswith(".pdf"):
+            items[fname] = {"filename": fname}
+    return JsonResponse({"items": items, "checked_at": ""})
 
 
 # Upload Documents
